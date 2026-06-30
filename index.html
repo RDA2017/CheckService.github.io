@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Service | Mecánica y Electrónica Avanzada</title>
+    <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div class="top-bar">
+		<div class="top-bar-container">
+			<div class="top-contact">
+				<a href="mailto:servicecheckautomotor@gmail.com.ar"><i class="fas fa-envelope"></i> servicecheckautomotor@gmail.com.ar</a>
+				<a href="https://wa.me/5491151507872" target="_blank"><i class="fab fa-whatsapp"></i> 11-4086-7054</a>
+				<span><i class="fas fa-map-marker-alt"></i> Caseros, Tres de Febrero, Bs. As.</span>
+			</div>
+			
+			<div class="top-social">
+				<a href="https://www.linkedin.com/company/check-service-caseros/" target="_blank"><i class="fab fa-linkedin"></i></a>
+				<a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+				<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+			</div>
+		</div>
+	</div>
+
+    <header>
+        <div class="logo" onclick="navigate('home')" style="display: flex; align-items: center; gap: 12px;">
+            <img src="./assets/cstransp.png" alt="Check Service Logo" style="height: 45px; width: auto;">
+            <div>Check <span>Service</span></div>
+        </div>
+        
+        <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
+        
+        <nav>
+            <ul id="nav-links">
+                <li><a onclick="navigate('home')" class="nav-link" data-target="home">Inicio</a></li>
+                <li><a onclick="navigate('services')" class="nav-link" data-target="services">Servicios</a></li>
+                <li><a onclick="navigate('booking')" class="nav-link" data-target="booking">Turnos</a></li>
+                <li><a onclick="navigate('multimedia')" class="nav-link" data-target="multimedia">Multimedia</a></li>
+                <li><a onclick="navigate('git')" class="nav-link" data-target="git">G.I.T.</a></li>
+                <li><a onclick="navigate('vts')" class="nav-link" data-target="vts">VTS</a></li>
+                <li><a onclick="navigate('news')" class="nav-link" data-target="news">Novedades</a></li>
+                <li><a onclick="navigate('training')" class="nav-link" data-target="training">Capacitaciones</a></li>
+                <li><a onclick="navigate('alliance')" class="nav-link" data-target="alliance">Alianzas</a></li>
+                <li><a onclick="navigate('about')" class="nav-link" data-target="about">Nosotros</a></li>
+                <li><a onclick="navigate('contact')" class="nav-link" data-target="contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="view-container active">
+            <div class="hero">
+                <h1>Check Service</h1>
+                <p>Precisión aeronáutica aplicada a la mecánica automotriz. Elevamos el estándar del mantenimiento vehicular.</p>
+                <div class="hero-btns">
+                    <button class="btn" onclick="navigate('booking')">Solicitar Turno</button>
+                    <button class="btn btn-outline" onclick="navigate('services')">Nuestras Capacidades</button>
+                </div>
+            </div>
+            
+            <div class="features section-padding">
+                <div class="feature-item">
+                    <i class="fas fa-microchip"></i>
+                    <h3>TECNOLOGIA</h3>
+                    <p>Desarrollo de software de Gestión Integral del Taller</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-double"></i>
+                    <h3>ESTANDAR VTS</h3>
+                    <p>Calidad de inspección derivados de la Industria Aeronáutica.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>SEGURIDAD</h3>
+                    <p>Instrumental de medición con calibración trazable INTI/SAC</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>PROFESIONALIDAD</h3>
+                    <p>Capacitaciones constantes y actualizaciones de nuevas tecnologías</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-history"></i>
+                    <h3>EXPERIENCIA</h3>
+                    <p>Más de 5 años en Inyección Electrónica y 10 años en procedimientos aeronáuticos.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-award"></i>
+                    <h3>CALIDAD</h3>
+                    <p>Siguiendo los estándares de calidad del manual de fabricante.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="view-container section-padding">
+            <h2 class="section-title">Servicios Especializados</h2>
+			<div class="alliance-grid">
+                <div class="category-block">
+                    <div class="category-header"><i class="fas fa-search"></i><h3>Diagnóstico</h3></div>
+                    <ul class="service-list">
+                        <li>Diagnóstico computarizado</li>
+                        <li>Diagnóstico eléctrico automotriz</li>
+                        <li>Prueba de sensores y actuadores</li>
+                        <li>Análisis de señales y fallas intermitentes</li>
+                        <li>Prueba de vacío y compresión diferencial</li>
+                        <li>Inspección de motores</li>
+                    </ul>
+                </div>
+                <div class="category-block">
+                    <div class="category-header"><i class="fas fa-oil-can"></i><h3>Mantenimiento de Línea</h3></div>
+                    <ul class="service-list">
+                        <li>Cambio de bujías e Inyectores</li>
+                        <li>Lubricación y Filtros</li>
+                        <li>Limpieza cuerpo de aceleración</li>
+                        <li>Lavado de motor y vehículo</li>
+                    </ul>
+                </div>
+                <div class="category-block">
+                    <div class="category-header"><i class="fas fa-clipboard-check"></i><h3>Mantenimiento Preventivo</h3></div>
+                    <ul class="service-list">
+                        <li>Regulación de válvulas y Puesta a punto</li>
+                        <li>Mantenimiento de frenos</li>
+                        <li>Servicio de distribución</li>
+                        <li>Inspecciones recomendadas por fabricante</li>
+                    </ul>
+                </div>
+                <div class="category-block">
+                    <div class="category-header"><i class="fas fa-wrench"></i><h3>Reparaciones Menores</h3></div>
+                    <ul class="service-list">
+                        <li>Electricidad e Inyección electrónica</li>
+                        <li>Motores de arranque y Alternadores</li>
+                        <li>Tren delantero</li>
+                    </ul>
+                </div>
+                <div class="category-block">
+                    <div class="category-header"><i class="fas fa-cogs"></i><h3>Reparaciones Mayores</h3></div>
+                    <ul class="service-list">
+                        <li>Tapa de cilindro</li>
+                        <li>Instalaciones eléctricas completas</li>
+                        <li>Recorrida de motores</li>
+                    </ul>
+                </div>
+                <div class="category-block highlight">
+                    <div class="category-header"><i class="fas fa-truck-moving"></i><h3>Traslado de Taller</h3></div>
+                    <ul class="service-list">
+                        <li>Diagnóstico a domicilio</li>
+                        <li>Reparaciones menores in situ</li>
+                        <li>Diagnóstico previo a compra</li>
+                    </ul>
+                </div>
+                
+			<div class="services-gallery">
+				<div class="service-card">
+					<img src="./assets/multimedia/1.webp" alt="Diagnóstico">
+					<h4>Linea Vehiculos</h4>
+				</div>
+
+				<div class="service-card">
+					<img src="./assets/multimedia/2.webp" alt="Diagnóstico">
+					<h4>Linea Camionetas</h4>
+				</div>
+
+				<div class="service-card">
+					<img src="./assets/multimedia/3.webp" alt="Diagnóstico">
+					<h4>Linea Camiones</h4>
+				</div>
+
+				<div class="service-card">
+					<img src="./assets/multimedia/4.webp" alt="Diagnóstico">
+					<h4>Linea Maquinaria Pesada</h4>
+				</div>
+			</div>
+
+		</section>                
+                
+        <section id="booking" class="view-container section-padding">
+            <h2 class="section-title">Solicitud de Turno</h2>
+            <div class="form-container">
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group"><label>Nombre</label><input type="text" id="b-name" required></div>
+                        <div class="form-group"><label>WhatsApp</label><input type="tel" id="b-tel" required placeholder="Ej: 1151507872"></div>
+                    </div>
+                    <div class="form-group"><label>Vehículo (Marca/Modelo)</label><input type="text" id="b-car" required></div>
+                    <div class="form-group">
+                        <label>Categoría de Interés</label>
+                        <select id="b-service" required>
+                            <option value="Diagnostico">Diagnóstico</option>
+                            <option value="Mantenimiento">Mantenimiento</option>
+                            <option value="Reparacion">Reparaciones</option>
+                            <option value="Traslado">Servicio a Domicilio (Traslado)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-full">Enviar por WhatsApp</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="multimedia" class="view-container section-padding">
+            <h2 class="section-title">Multimedia</h2>
+            <div class="gallery-filters" id="filters-container">
+                <button class="filter-btn active" onclick="filterGallery('todos', this)">Todos los Álbumes</button>
+                <button class="filter-btn" onclick="filterGallery('Alternadores', this)">Alternadores</button>
+                <button class="filter-btn" onclick="filterGallery('Motor de Arranque', this)">Motor de Arranque</button>
+                <button class="filter-btn" onclick="filterGallery('Inyeccion Electronica', this)">Inyección Electrónica</button>
+                <button class="filter-btn" onclick="filterGallery('Electricidad', this)">Electricidad</button>
+                <button class="filter-btn" onclick="filterGallery('Electronica', this)">Electrónica</button>
+                <button class="filter-btn" onclick="filterGallery('Distribucion', this)">Distribución</button>
+                <button class="filter-btn" onclick="filterGallery('Tapa de Cilindro', this)">Tapa de Cilindro</button>
+                <button class="filter-btn" onclick="filterGallery('Mecanica General', this)">Mecánica Ligera</button>
+                <button class="filter-btn" onclick="filterGallery('Nosotros', this)">Nosotros</button>
+            </div>
+            <div id="gallery-grid" class="gallery-grid"></div>
+        </section>
+
+<!-- ================= GIT ================= -->
+        <section id="git" class="view-container section-padding">
+            <h2 class="section-title">G.I.T. (Gestión Integral de Taller)</h2>
+            
+            <div class="about-flex" style="max-width: 1100px; margin: 0 auto;">
+                
+                <div class="about-section vts-highlight" style="margin-bottom: 40px;">
+                    <h3>La Tecnología como Garantía de Seguridad</h3>
+                    <p>
+                        En la industria aeronáutica, la trazabilidad absoluta de cada componente es lo que garantiza la seguridad operacional. 
+                        Basado en esa premisa, desarrollamos <strong>G.I.T.</strong>, un software diseñado para trasladar esa rigurosidad al taller automotriz. 
+                        Tener un software con estas especificaciones elimina la improvisación: cada decisión mecánica queda respaldada por datos precisos y un historial inalterable.
+                    </p>
+                </div>
+
+                <div class="services-container">
+                    
+                    <div class="category-block">
+                        <div class="category-header">
+                            <i class="fas fa-microchip"></i>
+                            <h3>Núcleo Operativo (OT)</h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Generación automática de códigos de Orden de Trabajo.</li>
+                            <li>Creación automática de carpetas de archivos por cada OT.</li>
+                            <li>Registro permanente de trabajos, observaciones y estados.</li>
+                            <li>Asociación directa entre Cliente y Vehículo para trazabilidad.</li>
+                        </ul>
+                    </div>
+
+                    <div class="category-block">
+                        <div class="category-header">
+                            <i class="fas fa-database"></i>
+                            <h3>Gestión de Activos</h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Módulo de Vehículos con historial completo de intervenciones.</li>
+                            <li>Libro de Actas Digital para auditorías y control histórico.</li>
+                            <li>Ingreso Rápido: alta de cliente, móvil y OT en un solo flujo.</li>
+                            <li>Bases de datos locales (SQLite) para máxima velocidad sin internet.</li>
+                        </ul>
+                    </div>
+
+                    <div class="category-block">
+                        <div class="category-header">
+                            <i class="fas fa-boxes"></i>
+                            <h3>Infraestructura</h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Inventario detallado de insumos, repuestos y herramientas.</li>
+                            <li>Administración de sucursales con datos técnicos, fiscales y ubicación.</li>
+                            <li>Control económico: presupuestos, pagos y saldos pendientes.</li>
+                            <li>Sistema de Backups periódicos para resguardo de información crítica.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="software-showcase" style="margin-top: 60px;">
+                    <h3 style="text-align: center; margin-bottom: 30px; font-family: 'Montserrat';">Interfaz del Sistema RDS</h3>
+                    <div class="gallery-grid">
+                     
+                        <div class="gallery-item">
+                            <div class="category-badge"></div>
+                            <img src="./assets/multimedia/git/2.webp" alt="Dashboard G.I.T." onclick="abrirLightbox('Software', this.src)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <div class="category-badge"></div>
+                            <img src="./assets/multimedia/git/1.webp" alt="Módulo OT G.I.T." onclick="abrirLightbox('Software', this.src)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <div class="category-badge"></div>
+                            <img src="./assets/multimedia/git/3.webp" alt="Inventario G.I.T." onclick="abrirLightbox('Software', this.src)">
+                        </div>
+
+                        <div class="gallery-item">
+                            <div class="category-badge"></div>
+                            <img src="./assets/multimedia/git/4.webp" alt="Dashboard G.I.T." onclick="abrirLightbox('Software', this.src)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <div class="category-badge"></div>
+                            <img src="./assets/multimedia/git/5.webp" alt="Módulo OT G.I.T." onclick="abrirLightbox('Software', this.src)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <div class="category-badge"></div>
+                            <img src="./assets/multimedia/git/6.webp" alt="Inventario G.I.T." onclick="abrirLightbox('Software', this.src)">
+                        </div>
+
+                		<div class="about-section vts-highlight" style="margin-bottom: 40px;">
+                    		<h3>Adquisicion del software</h3>
+                    		<p>
+						Para adquirir el programa ponte en contacto con nostros para conocer el estado de evolucion de la reversion actual
+                    		</p>
+               		</div>
+
+                <div style="text-align: center; margin-top: 40px; font-size: 0.9rem; color: var(--text-muted);">
+                    <p><em>Desarrollado por RDS - Rivas Desarrollo de Software</em></p>
+                </div>
+
+            </div>
+        </section>
+
+
+<!-- ================= VTS ================= -->
+        <section id="vts" class="view-container section-padding">
+            <h2 class="section-title">Estándar VTS</h2>
+    
+            <div class="about-flex" style="max-width: 1100px; margin: 0 auto;">
+        
+                <div class="about-section vts-highlight" style="margin-bottom: 40px;">
+                    <h3>No somos un taller. Somos un sistema.</h3>
+                    <p>
+                        La industria automotriz independiente tiene talento y capacidad técnica, pero históricamente ha carecido de una estructura común. 
+                        <strong>VTS (Vehicle Technical Specification)</strong> nace para proponer que el estándar sea el nuevo diferencial. 
+                        No es solo un manual; es un lenguaje común diseñado para que la seguridad no sea un discurso, sino un sistema replicable donde el éxito no depende del individuo, sino del método.
+                    </p>
+                </div>
+
+                <div class="about-grid" style="grid-template-columns: 1fr 1fr; display: grid; gap: 30px; margin-bottom: 50px;">
+                    <div class="about-block">
+                        <h3><i class="fas fa-plane-arrival"></i> Origen Aeroespacial</h3>
+                        <p>
+                            VTS adapta la normativa internacional <strong>ATA 100 / iSpec 2200</strong> de la aviación a la arquitectura vehicular moderna. 
+                            Este sistema organiza cada intervención en una jerarquía de Grupos y Capítulos, permitiendo una trazabilidad absoluta y una reducción drástica del error humano.
+                        </p>
+                    </div>
+                    <div class="about-block">
+                        <h3><i class="fas fa-shield-alt"></i> Gestión del Riesgo (HF)</h3>
+                        <p>
+                            Implementamos el concepto de <strong>Factores Humanos (HF)</strong> y el análisis de la <em>"Sucia Docena"</em> (Dirty Dozen) para gestionar el error en el mantenimiento. 
+                            Cada vehículo liberado bajo estándar VTS cuenta con una certificación de <strong>Release to Service (RTS)</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="about-section" style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                    <h3 style="text-align: center; margin-bottom: 25px;">Estructura de Configuración VTS</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: var(--primary); color: white;">
+                                    <th style="padding: 12px; text-align: left;">Capítulo VTS</th>
+                                    <th style="padding: 12px; text-align: left;">Nombre Sistema</th>
+                                    <th style="padding: 12px; text-align: left;">Aplicación Automotriz</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <td style="padding: 10px;"><strong>VTS 05</strong></td>
+                                    <td>Time Limits</td>
+                                    <td>Gestión de Services, correas y vida útil.</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #eee; background: #f9f9f9;">
+                                    <td style="padding: 10px;"><strong>VTS 12</strong></td>
+                                    <td>Servicing</td>
+                                    <td>Fluidos, niveles y limpieza técnica de sistemas.</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <td style="padding: 10px;"><strong>VTS 24</strong></td>
+                                    <td>Electrical Power</td>
+                                    <td>Batería, alternador y gestión de energía.</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #eee; background: #f9f9f9;">
+                                    <td style="padding: 10px;"><strong>VTS 45</strong></td>
+                                    <td>Central Diagnostic</td>
+                                    <td>Escaneo de ECUs, análisis de fallas y logbooks.</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <td style="padding: 10px;"><strong>VTS 72</strong></td>
+                                    <td>Engine</td>
+                                    <td>Mecánica interna: bloque, tapa y distribución.</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #eee; background: #f9f9f9;">
+                                    <td style="padding: 10px;"><strong>VTS 82</strong></td>
+                                    <td>Transmission</td>
+                                    <td>Cajas de transferencia, diferenciales y ejes.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; padding: 20px; border: 1px dashed var(--accent); border-radius: 8px; text-align: center;">
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">
+                        <i class="fas fa-copyright"></i> <strong>Propiedad Intelectual:</strong> El desarrollo, codificación y metodología VTS son propiedad de <strong>Rivas Lucas</strong>. 
+                        Su uso está sujeto a licencias oficiales de Check Service.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+<!-- ================= Novedades ================= -->
+
+
+        <section id="news" class="view-container section-padding">
+            <h2 class="section-title">Novedades</h2>
+            <div id="news-container" class="services-container" style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+                    </div>
+        </section>
+
+
+<!-- ================= Capacitaciones ================= -->
+        <section id="training" class="view-container section-padding">
+            <h2 class="section-title">Capacitaciones</h2>
+            
+            <div class="about-flex" style="max-width: 1000px; margin: 0 auto;">
+                
+                <div class="vts-highlight" style="margin-bottom: 40px; border-left: 5px solid var(--accent); background: rgba(255, 152, 0, 0.1); padding: 20px; border-radius: 0 8px 8px 0;">
+                    <p style="font-style: italic; font-weight: 600; color: var(--primary); line-height: 1.6;">
+                        "Check Service se encuentra en desarrollo de las siguientes capacitaciones, las cuales luego de estar el contenido completamente formado se buscará la homologación del curso para ofrecer certificación oficial."
+                    </p>
+                </div>
+
+                <div class="services-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                    
+                    <div class="category-block" style="background: #fff; border: 1px solid #eee; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+                        <div class="category-header" style="background: var(--primary); color: white; padding: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-users-cog"></i>
+                           Factores Humanos</h3>
+                        </div>
+                        <div style="padding: 20px; flex-grow: 1;">
+                            <p style="margin-bottom: 15px;"><strong>Enfoque:</strong> Implementación del modelo aeronáutico de gestión del riesgo y seguridad operacional aplicado al mantenimiento vehicular.</p>
+                            <p><strong>Objetivo:</strong> Profesionalizar la gestión del equipo de trabajo, reduciendo incidentes críticos y elevando el estándar de seguridad mediante la cultura del error responsable.</p>
+                        </div>
+                    </div>
+
+                    <div class="category-block" style="background: #fff; border: 1px solid #eee; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+                        <div class="category-header" style="background: var(--primary); color: white; padding: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-file-invoice"></i>
+                            Sistema VTS</h3>
+                        </div>
+                        <div style="padding: 20px; flex-grow: 1;">
+                            <p style="margin-bottom: 15px;"><strong>Enfoque:</strong> Adopción del estándar técnico basado en la normativa internacional ATA 100 para la organización y codificación de intervenciones.</p>
+                            <p><strong>Objetivo:</strong> Unificar el lenguaje técnico del taller, permitiendo una trazabilidad absoluta y una estructura de mantenimiento replicable y profesional.</p>
+                        </div>
+                    </div>
+
+                    <div class="category-block" style="background: #fff; border: 1px solid #eee; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+                        <div class="category-header" style="background: var(--primary); color: white; padding: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-laptop-code"></i>
+                            Software G.I.T.</h3>
+                        </div>
+                        <div style="padding: 20px; flex-grow: 1;">
+                            <p style="margin-bottom: 15px;"><strong>Enfoque:</strong> Operatividad y administración avanzada mediante el ecosistema digital de gestión desarrollado por RDS.</p>
+                            <p><strong>Objetivo:</strong> Digitalizar integralmente el flujo de trabajo, desde la recepción bajo estándar VTS hasta la certificación final de aptitud (Release to Service).</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="about-section" style="margin-top: 50px; background: #f9f9f9; border-radius: 12px; padding: 30px; border: 1px solid #eee;">
+                    <h3 style="text-align: center; color: var(--primary); margin-bottom: 25px; font-family: 'Montserrat';">Modalidades de Dictado</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div style="text-align: center; padding: 25px; border: 1px solid #ddd; border-radius: 8px; background: white;">
+                            <i class="fas fa-map-marker-alt" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+                            <h4 style="margin-bottom: 10px;">In Situ</h4>
+                            <p style="font-size: 0.9rem; color: #555;">Capacitación presencial en el taller solicitante, adaptada a su propia infraestructura y equipo técnico.</p>
+                        </div>
+                        <div style="text-align: center; padding: 25px; border: 1px solid #ddd; border-radius: 8px; background: white;">
+                            <i class="fas fa-desktop" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+                            <h4 style="margin-bottom: 10px;">Virtual</h4>
+                            <p style="font-size: 0.9rem; color: #555;">Formación remota mediante plataforma online para técnicos y propietarios de todo el país.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+		<!-- ================= Alianzas ================= -->
+		<section id="alliance" class="view-container section-padding">
+
+			<h2 class="section-title">Nuestras Alianzas</h2>
+
+			<p style="text-align: center; margin-bottom: 40px; color: var(--text-muted);">
+				Trabajamos junto a empresas y profesionales especializados que complementan nuestras capacidades técnicas, permitiéndonos ofrecer soluciones más completas, confiables y alineadas con los más altos estándares de calidad.
+			</p>
+
+			<!-- Imagen principal de alianzas -->
+			<div class="alliance-banner">
+				<img src="./assets/multimedia/colaboraciones/alianzas.webp"
+					 alt="Alianzas Estratégicas">
+			</div>
+
+			<div class="alliance-grid">
+
+				<!-- EQUIPO DE DESARROLLO -->
+				<div class="category-block highlight">
+					<div class="alliance-logo">
+						<img src="./assets/multimedia/colaboraciones/devteam.webp" alt="Equipo de Desarrollo">
+					</div>
+
+					<div class="category-header">
+						<i class="fas fa-users-cog"></i>
+						<h3>Equipo de Desarrollo</h3>
+					</div>
+
+					<span class="badge-alianza">DESARROLLO TECNOLÓGICO</span>
+
+					<p class="alliance-desc">
+						Equipo multidisciplinario dedicado al diseño y evolución de soluciones digitales orientadas a la gestión técnica y operativa. Su participación permite transformar necesidades reales del taller en herramientas tecnológicas que optimizan procesos, trazabilidad y control de la información.
+					</p>
+				</div>
+
+				<!-- RDS -->
+				<div class="category-block highlight">
+					<div class="alliance-logo">
+						<img src="./assets/multimedia/colaboraciones/rds2.webp" alt="Rivas Software Logo">
+					</div>
+
+					<div class="category-header">
+						<i class="fas fa-code"></i>
+						<h3>Rivas Desarrollo de Software</h3>
+					</div>
+
+					<span class="badge-alianza">GESTIÓN DIGITAL</span>
+
+					<p class="alliance-desc">
+						Responsable del desarrollo de nuestro ecosistema digital y del sistema Gestión Integral del Taller. Sus soluciones permiten una administración eficiente de la información, trazabilidad completa de los trabajos realizados y una comunicación más transparente con nuestros clientes.
+					</p>
+				</div>
+
+				<!-- JET SERVICE -->
+				<div class="category-block highlight">
+					<div class="alliance-logo">
+						<img src="./assets/multimedia/colaboraciones/jsilogo.webp" alt="Jet Service Logo">
+					</div>
+
+					<div class="category-header">
+						<i class="fas fa-microscope"></i>
+						<h3>JET SERVICE</h3>
+					</div>
+
+					<span class="badge-alianza">METROLOGÍA AVANZADA</span>
+
+					<p class="alliance-desc">
+						Especialistas en calibración, verificación y ensayos de alta precisión. Su experiencia garantiza que los instrumentos de medición dimensional, presión y torque utilizados en nuestros procesos cumplan con las tolerancias técnicas y requisitos normativos más exigentes.
+					</p>
+				</div>
+
+				<!-- L&B RACING -->
+				<div class="category-block highlight">
+					<div class="alliance-logo">
+						<img src="./assets/multimedia/colaboraciones/lb_racing.webp" alt="L&B Racing">
+					</div>
+
+					<div class="category-header">
+						<i class="fas fa-tools"></i>
+						<h3>L&B Racing</h3>
+					</div>
+
+					<span class="badge-alianza">COLABORACIÓN TÉCNICA</span>
+
+					<p class="alliance-desc">
+						Taller especializado con el que desarrollamos trabajos conjuntos en proyectos que requieren capacidades complementarias. Esta colaboración nos permite ampliar recursos técnicos, compartir experiencia profesional y ofrecer soluciones más completas a nuestros clientes.
+					</p>
+				</div>
+
+				<!-- CN ELEVADORES -->
+				<div class="category-block highlight">
+					<div class="alliance-logo">
+						<img src="./assets/multimedia/colaboraciones/cn.webp" alt="CN Elevadores Logo">
+					</div>
+
+					<div class="category-header">
+						<i class="fas fa-industry"></i>
+						<h3>CN Elevadores</h3>
+					</div>
+
+					<span class="badge-alianza">MECÁNICA PESADA</span>
+
+					<p class="alliance-desc">
+						Especialistas en mantenimiento, reparación e instalación de sistemas de elevación y maquinaria de gran porte. Esta alianza fortalece nuestra capacidad operativa y amplía el alcance geográfico de los servicios técnicos que ofrecemos.
+					</p>
+				</div>
+
+				<!-- PRADA AUTOELEVADORES -->
+				<div class="category-block highlight">
+					<div class="alliance-logo">
+						<img src="./assets/multimedia/colaboraciones/prada.webp" alt="Prada Autoelevadores">
+					</div>
+
+					<div class="category-header">
+						<i class="fas fa-warehouse"></i>
+						<h3>Prada Autoelevadores</h3>
+					</div>
+
+					<span class="badge-alianza">MAQUINARIA INDUSTRIAL</span>
+
+					<p class="alliance-desc">
+						Empresa especializada en comercialización, provisión de repuestos, servicio postventa y mantenimiento de equipos de elevación y maquinaria de trabajo. La colaboración técnica entre ambas organizaciones permite brindar soporte integral a una amplia variedad de equipos industriales.
+					</p>
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<section id="about" class="view-container section-padding">
+			<h2 class="section-title">La Identidad de Check Service</h2>
+
+			<div class="about-flex" style="max-width: 1000px; margin: 0 auto;">
+
+				<div class="about-section">
+					<h3>EL INICIO</h3>
+
+					<p>Check Service nació como una iniciativa orientada a elevar los estándares técnicos dentro de la industria automotriz. Durante su etapa fundacional, el proyecto se desarrolló a partir de la colaboración de profesionales con diferentes experiencias técnicas, combinando conocimientos de campo, electrónica avanzada, metodología aeronáutica y desarrollo tecnológico.</p>
+
+					<p>Esta primera etapa permitió establecer las bases de una filosofía centrada en la calidad, la innovación, la trazabilidad y la mejora continua. En mayo de 2026, Check Service inició una nueva fase bajo la dirección exclusiva de <strong>Lucas Gonzalo Rivas</strong>, consolidando una visión enfocada en la profesionalización del mantenimiento, el desarrollo de estándares técnicos y la creación de soluciones para la industria automotriz y de equipos.</p>
+				</div>
+
+				<div class="about-section vts-highlight" style="margin-top: 30px;">
+					<h3>IDENTIDAD</h3>
+
+					<p>Check Service nació con una convicción clara: la industria automotriz y de equipos merece estándares más altos. Desde sus inicios, el objetivo ha sido reemplazar la improvisación por procedimientos definidos, documentación técnica, trazabilidad y una cultura de trabajo basada en la excelencia.</p>
+
+					<p>Actualmente, Check Service es una marca orientada a la innovación, la gestión técnica y la mejora continua, integrando servicios especializados, desarrollo tecnológico, capacitación y metodologías propias destinadas a profesionalizar el sector.</p>
+
+					<p>Entre estas iniciativas destaca el estándar <strong>VTS (Vehicle Technical Specification)</strong>, una metodología inspirada en conceptos de organización y trazabilidad utilizados por la industria aeronáutica, adaptados a las necesidades del mantenimiento automotor moderno.</p>
+				</div>
+
+				<div class="about-section" style="margin-top: 30px; border-left: 4px solid var(--accent); padding-left: 20px;">
+					<h3>LO QUE DEFINE A CHECK SERVICE</h3>
+
+					<p>Más que una empresa, Check Service representa una forma de trabajar. El profesionalismo para actuar con responsabilidad técnica, la confianza para construir relaciones duraderas, la calidad como estándar mínimo y el orden como base de cada proceso son los principios que impulsan el desarrollo de cada servicio, metodología y solución tecnológica.</p>
+				</div>
+
+				<div class="about-grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+
+					<div class="about-section">
+						<h3>VISIÓN</h3>
+
+						<p>Convertir a Check Service en una marca referente en innovación, gestión técnica, estandarización y desarrollo tecnológico para la industria automotriz y de equipos, impulsando una nueva cultura de profesionalismo, calidad y mejora continua en toda la región.</p>
+					</div>
+
+					<div class="about-section">
+						<h3>MISIÓN</h3>
+
+						<p>Desarrollar soluciones técnicas, metodologías de trabajo, herramientas tecnológicas y servicios especializados que permitan elevar los estándares de calidad, seguridad, eficiencia y trazabilidad en el mantenimiento automotor y de equipos.</p>
+					</div>
+
+				</div>
+
+				<div class="about-section" style="margin-top: 40px;">
+					<h3>VALORES</h3>
+
+					<ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+
+						<li><strong>Profesionalismo:</strong> Actuar con responsabilidad técnica, compromiso y respeto por los estándares promovidos por la organización.</li>
+
+						<li><strong>Confianza:</strong> Construir relaciones transparentes basadas en la honestidad, la trazabilidad y el cumplimiento de los compromisos asumidos.</li>
+
+						<li><strong>Calidad:</strong> Buscar resultados consistentes, verificables y alineados con las mejores prácticas de la industria.</li>
+
+						<li><strong>Orden y Metodología:</strong> Garantizar procesos claros, documentados, repetibles y sujetos a mejora continua.</li>
+
+						<li><strong>Innovación y Evolución:</strong> Impulsar el desarrollo tecnológico, la capacitación permanente y la búsqueda constante de nuevas soluciones.</li>
+
+						<li><strong>Rigor Técnico:</strong> Aplicar criterios de precisión, trazabilidad y responsabilidad inspirados en industrias donde el error no es una opción.</li>
+
+					</ul>
+				</div>
+
+			</div>
+		</section>
+
+        <section id="contact" class="view-container section-padding">
+            <h2 class="section-title">Ubicación y Contacto</h2>
+            <div class="contact-grid">
+                <div class="contact-locations">
+                    <div class="location-card">
+                        <h3><i class="fas fa-tools"></i> Taller Central</h3>
+                        <p>Esteban Merlo 5252, Caseros</p>
+                    </div>
+                    <div class="location-card">
+                        <h3><i class="fas fa-satellite"></i> Taller Satélite</h3>
+                        <p>Dr. Rebizzo 4657, Caseros</p>
+                    </div>
+                </div>
+                <div class="contact-channels">
+                    <div class="channel-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div><span>WhatsApp</span><p>+54 9 11 4086-7054 (Rivas Lucas)</p></div>
+                    </div>
+                    <div class="channel-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><span>Email</span><p>servicecheckautomotor@gmail.com</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="lightbox-modal" class="lightbox">
+        <span class="close-lightbox" onclick="cerrarLightbox()">&times;</span>
+        <button class="nav-btn prev" onclick="cambiarFoto(-1)">&#10094;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Vista ampliada">
+            <div id="lightbox-caption"></div>
+        </div>
+        <button class="nav-btn next" onclick="cambiarFoto(1)">&#10095;</button>
+    </div>
+
+    <footer>
+        <p>© 2026 Check Service | Rivas Desarrollo de Software</p>
+        <div class="contador-container">
+            <span class="label">VISITAS:</span>
+            <span id="contador-interno" class="odometro">000000</span>
+        </div>
+    </footer>
+
+    <script src="datos-novedades.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
